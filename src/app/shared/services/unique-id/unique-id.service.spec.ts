@@ -7,9 +7,12 @@ import { UniqueIdService } from './unique-id.service';
 
 //Karma é um executor de testes criado pela prória equipe do Angular.
 
-const service = new UniqueIdService();
-
 describe(UniqueIdService.name, () => {
+  let service: UniqueIdService = null;
+  beforeEach(() => {
+    service = new UniqueIdService();
+  });
+
   it(`#${UniqueIdService.prototype.generateUniqueIdWithPrefix.name} should generate id when called with prefix`, () => {
     const id = service.generateUniqueIdWithPrefix('app');
     expect(id.startsWith('app-')).toBeTrue();
