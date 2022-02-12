@@ -40,7 +40,9 @@ describe(UniqueIdService.name, () => {
     const emptyValues = [null, undefined, '', '0', '1'];
     emptyValues.forEach((emptyValue) => {
       //Ao chamar um método que a expectativa é retornar uma exceção, é necessário chamar o método dentro de uma função
-      expect(() => service.generateUniqueIdWithPrefix(emptyValue)).toThrow();
+      expect(() => service.generateUniqueIdWithPrefix(emptyValue))
+        .withContext(`Empty value: ${emptyValue}`) //passar um contexto para saber qual valor falhou no teste
+        .toThrow();
     });
   });
 });
