@@ -1,15 +1,10 @@
-import { LikeWidgetModule } from './like-widget.module';
-import {
-  ComponentFixture,
-  ComponentFixtureAutoDetect,
-  TestBed,
-} from '@angular/core/testing';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { UniqueIdService } from './../../unique-id/unique-id.service';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { LikeWidgetComponent } from './like-widget.component';
+import { LikeWidgetModule } from './like-widget.module';
 
 describe(LikeWidgetComponent.name, () => {
   let fixture: ComponentFixture<LikeWidgetComponent> = null;
+  let component: LikeWidgetComponent = null;
 
   beforeEach(async () => {
     //TestBed, em suma, é uma solução para o programador não precisar ficar instanciando os componentes;
@@ -22,25 +17,34 @@ describe(LikeWidgetComponent.name, () => {
 
     //Component Fixture
     fixture = TestBed.createComponent(LikeWidgetComponent);
+    component = fixture.componentInstance;
   });
 
   it('Should create component', () => {
-    const component = fixture.componentInstance;
     expect(component).toBeTruthy();
   });
 
   it('Should auto generate ID when id input property is missing', () => {
     //por padrão, o desenvolvedor é responsável por disparar a change detection.
-    const component = fixture.componentInstance;
     fixture.detectChanges(); //detecta e passa pelo ngOnInit.
     expect(component.id).toBeTruthy();
   });
 
   it('Should not generate ID when id input property is present', () => {
-    const component = fixture.componentInstance;
     const someId = 'someId';
     component.id = someId;
     fixture.detectChanges();
     expect(component.id).toBe(someId);
+  });
+
+  it(`${LikeWidgetComponent.prototype.like.name}
+   should trigger emission when called`, () => {
+    fixture.detectChanges(); //disparar o ciclo de vida do angular.
+
+    // ↓↓↓↓é possivel utilizar um subscribe pelo fato do liked ser um observable.
+    component.liked.subscribe(() => {
+      expect(true).toBe(true); //só quero saber se realmente foi chamado o liked
+    });
+    component.like();
   });
 });
