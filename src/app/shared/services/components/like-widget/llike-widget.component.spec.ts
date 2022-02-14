@@ -31,12 +31,12 @@ describe(LikeWidgetComponent.name, () => {
    * Isso é uma recomendação da equipe do Angular para que evite problemas ao iniciar o ciclo do Angular
    * pelo ngOnInit.
    */
-  it('Should auto generate ID when id input property is missing', () => {
+  it('Should auto-generate ID during ngOnInit when (@Input id) is not assigned', () => {
     fixture.detectChanges();
     expect(component.id).toBeTruthy();
   });
 
-  it('Should not generate ID when id input property is present', () => {
+  it('Should NOT auto-generate ID during ngOnInit when (@Input id) is assigned', () => {
     const someId = 'someId';
     component.id = someId;
     fixture.detectChanges();
@@ -51,7 +51,7 @@ describe(LikeWidgetComponent.name, () => {
    * metodo, há uma flag que avisa que foi chamado o método.
    */
   it(`#${LikeWidgetComponent.prototype.like.name}
-   should trigger emission when called`, () => {
+   should trigger (@Output liked) when called`, () => {
     //sempre passar o objeto e o método que quer espionar.
     spyOn(component.liked, 'emit');
     fixture.detectChanges();
