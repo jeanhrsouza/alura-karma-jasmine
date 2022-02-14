@@ -44,20 +44,18 @@ describe(LikeWidgetComponent.name, () => {
   });
 
   /**
-   * Quando houver um subscribe, é interessante considerar uma função async ter o done como parâmetro.
-   * Desse modo, é mais fácil de avisar se falhou ou não o teste.
    * ---
    * Há o fixture.detectChange() no teste porque é onde dispara o ciclo de vida do angular ngOnInit().
    * ---
+   * Spy (espião) é um 'carinha' que vai possuir o método e substituir esse. Entre a chamada de spy e o
+   * metodo, há uma flag que avisa que foi chamado o método.
    */
   it(`#${LikeWidgetComponent.prototype.like.name}
-   should trigger emission when called`, (done) => {
+   should trigger emission when called`, () => {
+    //sempre passar o objeto e o método que quer espionar.
+    spyOn(component.liked, 'emit');
     fixture.detectChanges();
-    // ↓↓↓↓ é possivel utilizar um subscribe pelo fato do liked ser um observable.
-    component.liked.subscribe(() => {
-      expect(true).toBe(true); //Serve para saber se realmente foi chamado o liked
-      done();
-    });
     component.like();
+    expect(component.liked.emit).toHaveBeenCalled();
   });
 });
