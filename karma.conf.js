@@ -1,6 +1,11 @@
 // Karma configuration file, see link for more information
 // https://karma-runner.github.io/1.0/config/configuration-file.html
 
+/**
+ * Para instalar outros navegadores
+ * npm install -D karma-firefox-launcher@1.3.0
+ */
+
 module.exports = function (config) {
   config.set({
     basePath: '',
@@ -8,6 +13,7 @@ module.exports = function (config) {
     plugins: [
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
+      require('karma-firefox-launcher'), //dizendo que o Karma é capaz de lançar no FireFox
       require('karma-jasmine-html-reporter'),
       require('karma-coverage'),
       require('@angular-devkit/build-angular/plugins/karma')

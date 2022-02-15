@@ -7,6 +7,8 @@ describe(LikeWidgetComponent.name, () => {
   let component: LikeWidgetComponent = null;
 
   /**
+   * Os testes são escritos em Jasmine e quem roda os testes é o Karma
+   * ---------
    * TestBed, em suma, é uma solução para o programador não precisar ficar instanciando os componentes;
    * ---------
    * providers: [{ provide: ComponentFixtureAutoDetect, useValue: true }], //provê para o component a detecção automática de detectChanges();
