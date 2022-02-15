@@ -9,7 +9,7 @@
     "test-common": "ng test --browsers Chrome,Firefox",
     "test-firefox": "ng test --browsers Firefox",
     "test-ci": "ng test --watch=false --browsers ChromeHeadless",
-    "test-ci-tunned": "ng test --watch=false --browsers ChromeHeadless,FirefoxHeadless",
+    "test-ci-tunned": "ng test --watch=false --browsers ChromeHeadless,FirefoxSemCabeca",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
