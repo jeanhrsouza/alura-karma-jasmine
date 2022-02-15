@@ -4,6 +4,7 @@
 /**
  * Para instalar outros navegadores
  * npm install -D karma-firefox-launcher@1.3.0
+ * npm install -D karma-junit-reporter@2.0.1
  */
 
 module.exports = function (config) {
@@ -15,8 +16,9 @@ module.exports = function (config) {
       require('karma-chrome-launcher'),
       require('karma-firefox-launcher'), //dizendo que o Karma é capaz de lançar no FireFox
       require('karma-jasmine-html-reporter'),
+      require('karma-junit-reporter'),
       require('karma-coverage'),
-      require('@angular-devkit/build-angular/plugins/karma')
+      require('@angular-devkit/build-angular/plugins/karma'),
     ],
     client: {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
